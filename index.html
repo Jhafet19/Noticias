@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand ">NoticiONes</a>
+            <form class="d-flex">
+                <button class="btn btn-outline-success" type="button" data-bs-toggle="modal" data-bs-target="#inicioSesion">Iniciar Sesion</button>
+                <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal"
+                data-bs-target="#crearNoticia">Nueva noticia</button>
+              </form>
+   
+     
+
+        </div>
+    </nav>
+    <br>
+    <div class="container" id="noticias">
+        <div class="card" id="otro">
+            <div class="card-header">
+                <h5 class="card-title">asd</h5>
+
+            </div>
+            <div class="card-body">
+                <input type="date" class="card-text">Esta seria la fecha</input>
+
+                <p class="card-text">Este es el texto de la noticia</p>
+                <button type="button" class="btn btn-outline-warning " data-bs-toggle="modal"
+                    data-bs-target="#actualizarNoticia">
+                    Actualizar
+                </button>
+                <button type="button" class="btn btn-outline-danger " data-bs-toggle="modal"
+                    data-bs-target="#actualizarNoticia">
+                    Eliminar
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Button trigger modal -->
+<!-- Inicio de Secion -->
+<div class="modal fade" id="inicioSesion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Inicia Secion para eliminar Usuarios</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="userUpdate" class="row g-3 needs-validation" novalidate>
+            <div class="col-md-12">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="usuarioEliminar" required>
+              <div class="valid-feedback">
+                Encerio
+              </div>
+
+            </div>
+            <div class="col-md-12">
+              <label for="correoUpdate" class="form-label">Email</label>
+              <input type="text" class="form-control" id="contraEliminar" required>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+
+            </div>
+
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" onclick="inicioSesion()">Iniciar sesion</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Modal  para actualizar noticia-->
+    <div class="modal fade" id="actualizarNoticia" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">editar Noticia OwO</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="noticiaUpdate" class="row g-3 needs-validation" novalidate>
+                        <input type="number" hidden id="iduser">
+                        <div class="col-md-6">
+                            <label for="tituloUpdate" class="form-label">Titulo de la noticia</label>
+                            <input type="text" class="form-control" id="tituloUpdate" required>
+                            <div class="valid-feedback">
+                                Encerio
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <label for="autorUpdate" class="form-label">Autor</label>
+                            <input type="text" class="form-control" id="autorUpdate" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label for="fechaUpdate" class="form-label">Fecha de publicacion</label>
+                            <div class="input-group has-validation">
+                                <input type="date" class="form-control" id="fechaUpdate" required>
+                                <div class="invalid-feedback">
+                                    Please choose a username.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label for="notiUpdate" class="form-label">Noticia </label>
+                            <div class="input-group has-validation">
+                                <input type="text" class="form-control" id="notiUpdate" required>
+                                <div class="invalid-feedback">
+                                    Please choose a username.
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" onclick="guardarCambios()">Guardar cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Crear noticias -->
+    <div class="modal fade" id="crearNoticia" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Crear nueva noticia</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="noticiaUpdate" class="row g-3 needs-validation" novalidate>
+                        <input type="number" hidden id="iduser">
+                        <div class="col-md-6">
+                            <label for="tituloNueva" class="form-label">Titulo de la noticia</label>
+                            <input type="text" class="form-control" id="tituloNueva" required>
+                            <div class="valid-feedback">
+                                Encerio
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <label for="autorNueva" class="form-label">Autor</label>
+                            <input type="text" class="form-control" id="autorNueva" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label for="fechaNueva" class="form-label">Fecha de publicacion</label>
+                            <div class="input-group has-validation">
+                                <input type="date" class="form-control" id="fechaNueva" required>
+                                <div class="invalid-feedback">
+                                    Please choose a username.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label for="notiNueva" class="form-label">Noticia </label>
+                            <div class="input-group has-validation">
+                                <input type="text" class="form-control" id="notiNueva" required>
+                                <div class="invalid-feedback">
+                                    Please choose a username.
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" onclick="registrarUsuario()">Guardar cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+
+function eliminarNoticia(id) {
+      // Obtener los valores actualizados desde el formulario
+
+      fetch(`/eliminarHistoria`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id: id,
+          credencial: localStorage.getItem('token'),
+        }),
+      })
+        .then(response => {
+          if(response.ok){
+            alert("Usuario eliminado con exito")
+            location.reload();
+          }else{
+            alert("Necesitas iniciar sesion")
+          }
+        })
+        .catch(error => console.error('Error al actualizar usuario:', error));
+
+    }
+        //Inicio de sesion para eliminar
+         function inicioSesion() {
+      // Obtener los valores actualizados desde el formulario
+      const usuario = document.getElementById('usuarioEliminar').value;
+      const contrasena = document.getElementById('contraEliminar').value;
+
+      
+  fetch(`/crearCredenciales`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      usuario: usuario,
+      contrasena: contrasena,
+    }),
+  })
+    .then(response => response.json())
+    .then(data => {
+
+      if (data.error) {
+        alert('Inicio de sesión fallido');
+      } else {
+        localStorage.setItem("token", data.token);
+        alert('Inicio de sesión exitoso');
+        location.reload();
+      }
+    })
+    .catch(error => console.error('Error en la solicitud:', error));
+}
+    
+
+
+        function guardarCambios() {
+            // Obtener los valores actualizados desde el formulario
+            const noticiaUpdate = document.getElementById('notiUpdate').value;
+            const autorUpdate = document.getElementById('autorUpdate').value;
+            const fechaUpdate = document.getElementById('fechaUpdate').value;
+            const tituloUpdate = document.getElementById('tituloUpdate').value;
+            const idNoti = document.getElementById('iduser').value
+
+
+
+
+            // Obtener el ID del usuario (puedes establecerlo como un atributo en algún lugar del HTML)
+            // Realizar la solicitud de actualización
+            fetch(`/actualizarNoticia/${idNoti}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    autor: autorUpdate,
+                    titulo: tituloUpdate,
+                    noticia: noticiaUpdate,
+                    fechaPublicacion: fechaUpdate,
+
+                }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    alert('Usuario actualizado exitosamente');
+                    location.reload();
+                })
+                .catch(error => console.error('Error al actualizar usuario:', error));
+        }
+
+        function llenarDatos(noticia, titulo, autor, fechaPublicacion, id) {
+
+            const noticiaUpdate = document.getElementById('notiUpdate');
+            const autorUpdate = document.getElementById('autorUpdate');
+            const fechaUpdate = document.getElementById('fechaUpdate');
+            const tituloUpdate = document.getElementById('tituloUpdate');
+            const idNoti = document.getElementById('iduser')
+
+            const fechaISO = new Date(fechaPublicacion).toISOString().split('T')[0];
+
+
+
+            noticiaUpdate.value = noticia;
+            fechaUpdate.value = fechaISO;
+            autorUpdate.value = autor;
+            tituloUpdate.value = titulo;
+            idNoti.value = id;
+            console.log(idNoti.value);
+        }
+
+        function registrarUsuario() {
+            // Recopila la información del formulario
+            const titulo = document.getElementById('tituloNueva').value;
+            const noticia = document.getElementById('notiNueva').value;
+            const autor = document.getElementById('autorNueva').value;
+            const fecha = document.getElementById('fechaNueva').value;
+
+
+
+
+            // Realiza una solicitud POST al servidor para registrar el usuario
+            fetch('/crearNoticia', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    autor: autor,
+                    titulo: titulo,
+                    noticia: noticia,
+                    fechaPublicacion: fecha,
+
+                }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    alert('Usuario registrado exitosamente');
+                    location.reload();
+
+                })
+                .catch(error => console.error('Error al registrar usuario:', error));
+        }
+
+        fetch('/noticias')
+            .then(response => response.text())
+            .then(html => {
+                console.log(document.getElementById('otro'));
+                document.getElementById('otro').innerHTML = html;
+            })
+            .catch(error => console.error('error al obtener las noticias: ' + error))
+    </script>
+</body>
+
+</html>
